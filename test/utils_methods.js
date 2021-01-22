@@ -8,8 +8,8 @@ describe('utils', function() {
         u.methodExists(utils, 'asciiToHex');
         u.methodExists(utils, 'hexToNumberString');
         u.methodExists(utils, 'numberToHex');
-        u.methodExists(utils, 'fromWei');
-        u.methodExists(utils, 'toWei');
+        u.methodExists(utils, 'fromLuf');
+        u.methodExists(utils, 'toLuf');
         u.methodExists(utils, 'toBN');
         u.methodExists(utils, 'isAddress');
         u.methodExists(utils, 'soliditySha3');

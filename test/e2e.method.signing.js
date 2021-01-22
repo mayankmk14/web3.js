@@ -28,7 +28,7 @@ describe('transaction and message signing [ @E2E ]', function() {
         await web3.eth.sendTransaction({
             from: accounts[0],
             to: wallet[0].address,
-            value: web3.utils.toWei('50', 'ether'),
+            value: web3.utils.toLuf('50', 'tiluf'),
         });
 
         basic = new web3.eth.Contract(Basic.abi, basicOptions);
@@ -48,9 +48,9 @@ describe('transaction and message signing [ @E2E ]', function() {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
             from:     source,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei'))
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf'))
         };
 
         const signed = await web3.eth.signTransaction(rawTx);
@@ -81,9 +81,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             common: customCommon
         };
 
@@ -102,9 +102,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
         };
 
         const signed = await web3.eth.accounts.signTransaction(txObject, wallet[0].privateKey);
@@ -119,9 +119,9 @@ describe('transaction and message signing [ @E2E ]', function() {
 
         const txObject = {
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
         };
 
         web3.eth.accounts.signTransaction(txObject, wallet[0].privateKey, async function(err, signed){
@@ -140,9 +140,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             chain: "ropsten",
             common: {},
             hardfork: "istanbul"
@@ -165,9 +165,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             chain: "ropsten"
         };
 
@@ -188,9 +188,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(21000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             hardfork: "istanbul"
         };
 
@@ -212,9 +212,9 @@ describe('transaction and message signing [ @E2E ]', function() {
         const txObject = {
             nonce:    web3.utils.toHex(txCount),
             to:       destination,
-            value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
+            value:    web3.utils.toHex(web3.utils.toLuf('0.1', 'tiluf')),
             gasLimit: web3.utils.toHex(0),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             hardfork: "istanbul",
             chain:    "ropsten",
         };
@@ -326,7 +326,7 @@ describe('transaction and message signing [ @E2E ]', function() {
             nonce:    web3.utils.toHex(txCount),
             to:       instance.options.address,
             gasLimit: web3.utils.toHex(400000),
-            gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+            gasPrice: web3.utils.toHex(web3.utils.toLuf('10', 'gluf')),
             data: data
         };
 

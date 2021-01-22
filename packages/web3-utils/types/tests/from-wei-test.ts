@@ -15,38 +15,38 @@
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file from-wei-test.ts
+ * @file from-Luf-test.ts
  * @author Josh Stevens <joshstevens19@hotmail.co.uk>
  * @date 2018
  */
 
 import BN = require('bn.js');
-import {fromWei} from 'web3-utils';
+import {fromLuf} from 'web3-utils';
 
 const bigNumber = new BN(3);
 
 // $ExpectType string
-fromWei(bigNumber);
+fromLuf(bigNumber);
 // $ExpectType string
-fromWei('1');
+fromLuf('1');
 // $ExpectType string
-fromWei(bigNumber, 'ether');
+fromLuf(bigNumber, 'ether');
 // $ExpectType string
-fromWei('1', 'ether');
+fromLuf('1', 'ether');
 
 // $ExpectError
-fromWei(232);
+fromLuf(232);
 // $ExpectError
-fromWei(['string']);
+fromLuf(['string']);
 // $ExpectError
-fromWei([4]);
+fromLuf([4]);
 // $ExpectError
-fromWei({});
+fromLuf({});
 // $ExpectError
-fromWei(true);
+fromLuf(true);
 // $ExpectError
-fromWei(null);
+fromLuf(null);
 // $ExpectError
-fromWei(undefined);
+fromLuf(undefined);
 // $ExpectError
-fromWei(new BN(3), 'blah');
+fromLuf(new BN(3), 'blah');

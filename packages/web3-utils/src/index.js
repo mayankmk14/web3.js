@@ -23,7 +23,7 @@
 
 
 var _ = require('underscore');
-var ethjsUnit = require('ethjs-unit');
+var ethjsUnit = require('./unit');
 var utils = require('./utils.js');
 var soliditySha3 = require('./soliditySha3.js');
 var randombytes = require('randombytes');
@@ -205,15 +205,15 @@ var asciiToHex = function(str) {
 
 
 /**
- * Returns value of unit in Wei
+ * Returns value of unit in luf 
  *
  * @method getUnitValue
- * @param {String} unit the unit to convert to, default ether
- * @returns {BN} value of the unit (in Wei)
+ * @param {String} unit the unit to convert to, default tiluf 
+ * @returns {BN} value of the unit (in luf )
  * @throws error if the unit is not correct:w
  */
 var getUnitValue = function (unit) {
-    unit = unit ? unit.toLowerCase() : 'ether';
+    unit = unit ? unit.toLowerCase() : 'tiluf';
     if (!ethjsUnit.unitMap[unit]) {
         throw new Error('This unit "'+ unit +'" doesn\'t exist, please use the one of the following units' + JSON.stringify(ethjsUnit.unitMap, null, 2));
     }
@@ -221,66 +221,37 @@ var getUnitValue = function (unit) {
 };
 
 /**
- * Takes a number of wei and converts it to any other ether unit.
- *
- * Possible units are:
- *   SI Short   SI Full        Effigy       Other
- * - kwei       femtoether     babbage
- * - mwei       picoether      lovelace
- * - gwei       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
- *
- * @method fromWei
+ * Takes a number of luf and converts it to any other luf unit.
+ * @method fromLuf
  * @param {Number|String} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert to, default ether
+ * @param {String} unit the unit to convert to, default tiluf
  * @return {String|Object} When given a BN object it returns one as well, otherwise a number
  */
-var fromWei = function(number, unit) {
+var fromLuf = function(number, unit) {
     unit = getUnitValue(unit);
 
     if(!utils.isBN(number) && !_.isString(number)) {
         throw new Error('Please pass numbers as strings or BN objects to avoid precision errors.');
     }
 
-    return utils.isBN(number) ? ethjsUnit.fromWei(number, unit) : ethjsUnit.fromWei(number, unit).toString(10);
+    return utils.isBN(number) ? ethjsUnit.fromLuf (number, unit) : ethjsUnit.fromLuf (number, unit).toString(10);
 };
 
 /**
- * Takes a number of a unit and converts it to wei.
- *
- * Possible units are:
- *   SI Short   SI Full        Effigy       Other
- * - kwei       femtoether     babbage
- * - mwei       picoether      lovelace
- * - gwei       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
- *
- * @method toWei
+ * Takes a number of a unit and converts it to luf.
+ * @method toLuf
  * @param {Number|String|BN} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert from, default ether
+ * @param {String} unit the unit to convert from, default tiluf
  * @return {String|Object} When given a BN object it returns one as well, otherwise a number
  */
-var toWei = function(number, unit) {
+var toLuf = function(number, unit) {
     unit = getUnitValue(unit);
 
     if(!utils.isBN(number) && !_.isString(number)) {
         throw new Error('Please pass numbers as strings or BN objects to avoid precision errors.');
     }
 
-    return utils.isBN(number) ? ethjsUnit.toWei(number, unit) : ethjsUnit.toWei(number, unit).toString(10);
+    return utils.isBN(number) ? ethjsUnit.toLuf (number, unit) : ethjsUnit.toLuf (number, unit).toString(10);
 };
 
 
@@ -423,8 +394,8 @@ module.exports = {
     fromAscii: asciiToHex,
 
     unitMap: ethjsUnit.unitMap,
-    toWei: toWei,
-    fromWei: fromWei,
+    toLuf : toLuf ,
+    fromLuf : fromLuf ,
 
     padLeft: utils.leftPad,
     leftPad: utils.leftPad,

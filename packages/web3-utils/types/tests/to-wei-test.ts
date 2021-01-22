@@ -15,36 +15,36 @@
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file to-wei-test.ts
+ * @file to-luf-test.ts
  * @author Josh Stevens <joshstevens19@hotmail.co.uk>
  * @date 2018
  */
 
 import BN = require('bn.js');
-import {toWei} from 'web3-utils';
+import {toLuf} from 'web3-utils';
 
 const bigNumber = new BN(3);
 
 // $ExpectType string
-toWei('1');
+toLuf('1');
 // $ExpectType BN
-toWei(bigNumber);
+toLuf(bigNumber);
 // $ExpectType string
-toWei('1', 'finney');
+toLuf('1', 'finney');
 // $ExpectType BN
-toWei(bigNumber, 'finney');
+toLuf(bigNumber, 'finney');
 
 // $ExpectError
-toWei(['string']);
+toLuf(['string']);
 // $ExpectError
-toWei([4]);
+toLuf([4]);
 // $ExpectError
-toWei({});
+toLuf({});
 // $ExpectError
-toWei(true);
+toLuf(true);
 // $ExpectError
-toWei(null);
+toLuf(null);
 // $ExpectError
-toWei(undefined);
+toLuf(undefined);
 // $ExpectError
-toWei(1, 'blah');
+toLuf(1, 'blah');

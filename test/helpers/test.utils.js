@@ -27,7 +27,7 @@ var mine = async function(web3, account) {
         to: account,
         gasPrice: '1',
         gas: 4000000,
-        value: web3.utils.toWei('0', 'ether'),
+        value: web3.utils.toLuf('0', 'tiluf'),
     });
 }
 
